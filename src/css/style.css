@@ -1,0 +1,69 @@
+body {
+    background-color: black;
+}
+a {
+    text-decoration: none;
+}
+.containerLogin {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 40px;
+}
+.containerLogo img{
+    width: 300px;
+    height: 50px;
+    padding-top: 134px;
+
+}
+.containerInput form{
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+.containerInput input {
+    border: 2px solid black;
+    width: 300px;
+    height: 52px;
+    margin-bottom: 16px;
+    border-radius: 7px;
+}
+.containerInput ::placeholder{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    margin-left: 55px;
+    padding-left: 14px;
+}
+.containerInput button{
+    width: 308px;
+    height: 52px;
+    background-color: rgba(255, 71, 145, 1);
+    border-radius: 7px;
+    border: none;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    border: 2px solid rgb(190, 36, 98);
+    cursor: pointer;
+}
+.containerCadastro h1{
+    margin-top: 25px;
+    color:  white;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: underline 1px white
+}
+.containerCadastrar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 80px;
+}
