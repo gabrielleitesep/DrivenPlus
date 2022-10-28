@@ -3,15 +3,16 @@ import imgLogo from "../assets/Driven+.png"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import { useContext } from "react";
-// import  UserContext  from "./UserContext";
+import { useContext } from "react";
+import  UserContext  from "../context/context";
 
 export default function Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
-    // const {setUser} = useContext(UserContext)
+    const {setDados} = useContext(UserContext)
+
 
     function fazerLogin (e){
         e.preventDefault()
@@ -24,11 +25,17 @@ export default function Login() {
         promise.then (res => {
 
             console.log(res.data);
-            // setUser(res.data)
-            navigate("/home")
+            window.localStorage.setItem("index", JSON.stringify(res.data))
+            setDados(res.data)
+            navigate("/subscriptions")
         })
-        promise.catch(err => console.log(err.response.data.message))
+        promise.catch(err => {
+
+            console.log(err.response.data.message)
+            alert("Usuário ou senha inválidos")
+        })
     }
+
 
     return (
         <div className="containerLogin">
