@@ -27,6 +27,7 @@ export default function Cadastro() {
             alert("Dados cadastrais inválidos!")
     })
     }
+    
     return (
         <div className="containerCadastrar">
             <div className="containerInput">
