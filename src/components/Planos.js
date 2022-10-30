@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import UserContext from "../context/context"
+import UserContext from "../context/useContext"
 import { useEffect } from "react"
 import axios from "axios"
 import Plano from "./Plano"
@@ -7,12 +7,12 @@ import Plano from "./Plano"
 
 export default function Planos() {
 
-    const { dados} = useContext(UserContext)
+    const { dados } = useContext(UserContext)
     const [pacote, setPacote] = useState([])
     const config = { headers: { Authorization: `Bearer ${dados.token}` } }
 
     useEffect(() => {
-        
+
         const promise = axios.get("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships", config)
         promise.then(res => {
 
@@ -32,7 +32,7 @@ export default function Planos() {
                 <h1>Escolha seu Plano</h1>
             </div>
             <div className="containerButtonsEscolha">
-                {pacote.map((p, index) => <Plano info={ p } key={ index } /> )}
+                {pacote.map((p, index) => <Plano info={p} key={index} />)}
             </div>
         </div>
     )

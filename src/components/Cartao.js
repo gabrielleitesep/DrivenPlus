@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useContext, useState } from "react";
-import UserContext from "../context/context";
+import UserContext from "../context/useContext";
 
 
 export default function Cartao() {

@@ -1,26 +1,51 @@
-import imgPlano1 from "../assets/Plano1.png"
-import imgPlano2 from "../assets/Setinha.png"
+
+import { Link } from "react-router-dom"
+import { useContext } from "react"
+import UserContext from "../context/useContext"
+import PlanContext from "../context/planContext"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 export default function Home() {
+
+    const { dados } = useContext(UserContext)
+    const { planData } = useContext(PlanContext)
+    const config = { headers: { Authorization: `Bearer ${dados.token}` } }
+    const navigate = useNavigate()
+
+    function cancelaPlano() {
+
+        const promise = axios.delete("https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions", config)
+
+        promise.then(res => {
+
+            console.log(res.data)
+            navigate("/subscriptions")
+        })
+        promise.catch(err => {
+
+            console.log(err.response.data.message)
+            alert("Erro no servidor!")
+        })
+    }
+
     return (
-        <>
+        <div className="containerHome">
             <div className="containerHeader">
-                <img src={imgPlano1} alt="botão para voltar a rota" />
-                <img src={imgPlano2} alt="botão para voltar a rota" />
-                <h1>Olá, fulano</h1>
+                <img src={planData.image} alt="botão para voltar a rota" />
             </div>
             <div className="containerHeaderNome">
-                <h1>Olá, fulano</h1>
+                <h1>Olá, {dados.name}</h1>
             </div>
-            <div className="containerpagina">
-                <div className="containerBotoesPlano">
-                    <button >Solicitar brindes</button>
-                </div>
-                <div className="containerBotoesFixo">
+            <div className="containerBotoesPlano">
+                {planData.perks.map((p) => (<button key={p.id}> {p.title}</button>))}
+            </div>
+            <div className="containerBotoesFixo">
+                <Link to="/subscriptions">
                     <button >Mudar plano</button>
-                    <button >Cancelar plano</button>
-                </div>
+                </Link>
+                <button onClick={() => cancelaPlano()}>Cancelar plano</button>
             </div>
-        </>
+        </div>
     )
 }
