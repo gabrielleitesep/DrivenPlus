@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useContext, useState } from "react";
 import UserContext from "../context/useContext";
+// import Swal from 'sweetalert2'
 
 
 export default function Cartao() {
@@ -14,6 +15,7 @@ export default function Cartao() {
     const { dados } = useContext(UserContext)
     const config = { headers: { Authorization: `Bearer ${dados.token}` } }
     const navigate = useNavigate()
+    // const Swal = require('sweetalert2')
 
     const body = {
 
@@ -48,9 +50,27 @@ export default function Cartao() {
                     <input placeholder="Digitos do cartão" type="text" onChange={e => setNumeroC(e.target.value)} required></input>
                     <input placeholder="Código de segurança" type="text" onChange={e => setCodigoS(e.target.value)} required></input>
                     <input placeholder="Validade" type="text" onChange={e => setValidade(e.target.value)} required></input>
-                    <button type="submit" >Assinar</button>
+                    <button type="submit">Assinar</button>
                 </form>
             </div>
         </div>
     )
 }
+
+// Swal.fire({
+//     title: 'Are you sure?',
+//     text: "You won't be able to revert this!",
+//     icon: 'warning',
+//     showCancelButton: true,
+//     confirmButtonColor: '#3085d6',
+//     cancelButtonColor: '#d33',
+//     confirmButtonText: 'Yes, delete it!'
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       Swal.fire(
+//         'Deleted!',
+//         'Your file has been deleted.',
+//         'success'
+//       )
+//     }
+//   })

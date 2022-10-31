@@ -282,8 +282,13 @@ a {
 .containerHeader {
     width: 100%;
     height: 100px;
-    padding-top: 30px;
-    padding-left: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+.containerHeader img{
+    padding-right: 225px;
 }
 
 .containerHeaderNome {

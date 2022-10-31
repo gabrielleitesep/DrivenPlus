@@ -38,7 +38,7 @@ export default function Home() {
                 <h1>Olá, {dados.name}</h1>
             </div>
             <div className="containerBotoesPlano">
-                {planData.perks.map((p) => (<button key={p.id}> {p.title}</button>))}
+            {planData.perks === undefined ? "" : planData.perks.map((b, index) => <a key={index} href={b.link}><button key={index}>{b.title}</button></a>)}
             </div>
             <div className="containerBotoesFixo">
                 <Link to="/subscriptions">
